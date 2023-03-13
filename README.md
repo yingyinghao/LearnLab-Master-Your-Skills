@@ -1,33 +1,34 @@
 # LearnLab-Master-Your-Skills
-Goals:
-Have to be really god in terms of UI
-We should have Basic Features like auth, good courses, etc.
 
-Pages:
-Landing Page 
-Login and Sign Up Page
-Users Main Courses page  
-Search Page 
-Detail Course View Page
-Course Completion Page 
-Edit Page for User Information
-Favourites Page
+##Goals:
+1. Have to be really god in terms of UI
+2. Should have Basic Features like auth, good courses, etc.
 
-
-Features:
-Authentication (Firebase)
-Search 
-Rating for courses 
-Course View 
-Comments for the selected course 
-Video Streaming
+##Pages:
+1. Landing Page 
+2. Login and Sign Up Page
+3. Users Main Courses page  
+4. Search Page 
+5. Detail Course View Page
+6. Course Completion Page 
+7. Edit Page for User Information
+8. Favourites Page
 
 
-Tech Stack:
+##Features:
+1. Authentication (Firebase)
+2. Search 
+3. Rating for courses 
+4. Course View 
+5. Comments for the selected course 
+6. Video Streaming
 
-FrontEnd: React, Bootstrap/Tailwind, CSS
-Backend: 
-Database: MongoDB Atlas/Firebase
+
+##Tech Stack:
+
+1. FrontEnd: `React, Bootstrap/Tailwind, CSS`
+2. Backend: 
+3. Database: `MongoDB Atlas/Firebase`
 
 
 
