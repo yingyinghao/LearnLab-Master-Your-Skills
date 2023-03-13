@@ -4,7 +4,7 @@
 1. Have to be really god in terms of UI
 2. Should have Basic Features like auth, good courses, etc.
 
-##Pages:
+## Pages:
 1. Landing Page 
 2. Login and Sign Up Page
 3. Users Main Courses page  
@@ -15,7 +15,7 @@
 8. Favourites Page
 
 
-##Features:
+## Features:
 1. Authentication (Firebase)
 2. Search 
 3. Rating for courses 
@@ -24,7 +24,7 @@
 6. Video Streaming
 
 
-##Tech Stack:
+## Tech Stack:
 
 1. FrontEnd: `React, Bootstrap/Tailwind, CSS`
 2. Backend: 
