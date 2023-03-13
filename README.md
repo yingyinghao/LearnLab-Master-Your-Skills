@@ -1,6 +1,6 @@
 # LearnLab-Master-Your-Skills
 
-##Goals:
+## Goals:
 1. Have to be really god in terms of UI
 2. Should have Basic Features like auth, good courses, etc.
 
