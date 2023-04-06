@@ -7,7 +7,7 @@ function Header() {
     <nav className='bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200 mb-36'>
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
         <div href='/' className='flex items-center'>
-          <img src= {icon} alt='Learn Lab icon' className='h-8 w-8' />
+          <img src={icon} alt='logo' className='h-10 w-10' />
           <span className='self-center text-xl font-semibold whitespace-nowrap'>
             Learn Lab
           </span>
