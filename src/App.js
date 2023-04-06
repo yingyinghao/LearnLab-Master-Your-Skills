@@ -17,6 +17,7 @@ function App() {
           <Route exact path='/login' element={<LogIn />} />
           <Route exact path='/signup' element={<SignUp />} />
            <Route exact path='/search' element={<Search />} />
+
           {/* <Route exact path='/courses' component={CourseHome} />
           <Route exact path='/team' component={Team} />
           <Route exact path='/pricing' component={Pricing} />
@@ -25,6 +26,7 @@ function App() {
         </Routes>
         {/* <Footer /> */}
       </Router>
+
     </>
   );
 }

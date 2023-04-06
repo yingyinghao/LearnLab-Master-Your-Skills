@@ -1,5 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+//import {auth, googleProvider} from "../config/firebase";
+//import {createUserWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
+import { signInWithGoogle } from "../utils/auth"
+
 
 function LogIn() {
   return (
@@ -107,7 +111,7 @@ function LogIn() {
                 <div className='mt-6 grid grid-cols-4 gap-2'>
                   <div className='col-span-4 sm:col-span-2'>
                     <div class='w-auto py-2'>
-                      <button class='flex items-center p-4 bg-white hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200'>
+                      <button onClick={signInWithGoogle} class='flex items-center p-4 bg-white hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200'>
                         <img
                           className='mr-3 w-[20px]'
                           src='https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA'
@@ -117,6 +121,7 @@ function LogIn() {
                           Sign in with Google
                         </span>
                       </button>
+
                     </div>
                   </div>
                   <div className='col-span-4 sm:col-span-2'>
@@ -142,5 +147,14 @@ function LogIn() {
     </>
   );
 }
+//  const signInwithGoogle = async() => {
+//       try {
+//         await signInWithPopup(auth,googleProvider)
+//      } catch (error) {
+//       console.log(error)
+//        }
+//      }
+
+
 
 export default LogIn;
