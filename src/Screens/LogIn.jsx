@@ -21,7 +21,7 @@ function LogIn() {
         // setError(false);
         const user = userCredential.user;
         dispatch({type: "LOGIN", payload: user});
-        navigate("/search");
+        navigate("/dashboard");
         console.log(user);
       })
       .catch((error) => {
@@ -36,7 +36,7 @@ function LogIn() {
     <>
       <div className='mt-20'>
         <section className='bg-white'>
-          <div className='lg:grid lg:min-h-screen lg:grid-cols-12'>
+          <div className='lg:grid lg:min-h-[93vh] lg:grid-cols-12'>
             <aside className='relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6'>
               <img
                 alt='Pattern'
@@ -134,20 +134,6 @@ function LogIn() {
                         />
                         <span className='font-semibold leading-normal'>
                           Sign in with Google
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className='col-span-4 sm:col-span-2'>
-                    <div className='w-auto py-2'>
-                      <button className='flex items-center p-4 bg-gray-900 hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200'>
-                        <img
-                          className='mr-3 w-[20px]'
-                          src='https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg'
-                          alt=''
-                        />
-                        <span className='font-semibold leading-normal text-white'>
-                          Continue with Apple
                         </span>
                       </button>
                     </div>

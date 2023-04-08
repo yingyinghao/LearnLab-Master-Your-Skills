@@ -13,7 +13,7 @@ import SignUp from "./Screens/SignUp";
 import Search from "./Screens/Search";
 import {useContext} from "react";
 import {AuthContext} from "./context/AuthContext";
-import Logout from "./Screens/Logout";
+import Dashboard from "./Screens/Dashboard";
 
 function App() {
   const {currentUser} = useContext(AuthContext);
@@ -31,10 +31,10 @@ function App() {
           <Route exact path='/signup' element={<SignUp />} />
           <Route
             exact
-            path='/logout'
+            path='/dashboard'
             element={
               <RequireAuth>
-                <Logout />
+                <Dashboard />
               </RequireAuth>
             }
           />
