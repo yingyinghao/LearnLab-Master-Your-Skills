@@ -1,11 +1,12 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import {initializeApp} from "firebase/app";
+// import {getAnalytics} from "firebase/analytics";
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import {getFirestore} from "firebase/firestore";
+// import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,10 +23,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize other Firebase services
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 const signIn = signInWithEmailAndPassword;
 const signUp = createUserWithEmailAndPassword;
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { signUp, signIn, auth, db };
+export {signUp, signIn, auth, db};
