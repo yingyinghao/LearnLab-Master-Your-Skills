@@ -26,9 +26,9 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />{" "}
-          <Route exact path='/login' element={<LogIn />} />{" "}
-          <Route exact path='/signup' element={<SignUp />} />{" "}
+          <Route path='/' element={<Home />} />
+          <Route exact path='/login' element={<LogIn />} />
+          <Route exact path='/signup' element={<SignUp />} />
           <Route
             exact
             path='/logout'
@@ -46,15 +46,10 @@ function App() {
                 <Search />
               </RequireAuth>
             }
-          />{" "}
-          {/* <Route exact path='/courses' component={CourseHome} />
-                      <Route exact path='/team' component={Team} />
-                      <Route exact path='/pricing' component={Pricing} />
-                      <Route exact path='/journal' component={Blog} />
-                      <Route exact path='/contact' component={Contact} /> */}{" "}
-        </Routes>{" "}
-        {/* <Footer /> */}{" "}
-      </Router>{" "}
+          />
+        </Routes>
+        {/* <Footer /> */}
+      </Router>
     </>
   );
 }
