@@ -203,7 +203,7 @@ function SignUp() {
                       <span>Already have an account? </span>
                       <Link to='/login'>
                         <span className='text-blue-700 underline font-medium'>
-                          Sign Up
+                          Sign In
                         </span>
                       </Link>
                     </p>
@@ -220,20 +220,6 @@ function SignUp() {
                         />
                         <span className='font-semibold leading-normal'>
                           Sign in with Google
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className='col-span-4 sm:col-span-2'>
-                    <div className='w-auto py-2'>
-                      <button className='flex items-center p-4 bg-gray-900 hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200'>
-                        <img
-                          className='mr-3 w-[20px]'
-                          src='https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg'
-                          alt=''
-                        />
-                        <span className='font-semibold leading-normal text-white'>
-                          Continue with Apple
                         </span>
                       </button>
                     </div>
