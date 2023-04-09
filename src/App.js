@@ -57,6 +57,15 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route
+            exact
+            path='/favorite'
+            element={
+              <RequireAuth>
+                <FavoriteCourses />
+              </RequireAuth>
+            }
+          />
         </Routes>
         {/* <Footer /> */}
       </Router>
