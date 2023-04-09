@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import icon from "../components/img/icon.png";
+// import icon from "../components/img/icon.png";
 import {AuthContext} from "../context/AuthContext";
 import {getAuth, signOut} from "firebase/auth";
 import {useNavigate} from "react-router-dom";
 // import {auth} from "../firebase";
+import Logo from "../Logo_LL.png";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,10 +35,10 @@ function Header() {
     <nav className='bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200 mb-36'>
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
         <div href='/' className='flex items-center'>
-          <img src={icon} alt='logo' className='h-10 w-10' />
-          <span className='self-center text-xl font-semibold whitespace-nowrap'>
+          <img src={Logo} alt='logo' className='h-14 w-26' />
+          {/* <span className='self-center text-xl font-semibold whitespace-nowrap'>
             Learn Lab
-          </span>
+          </span> */}
         </div>
         <div className='flex md:order-2'>
           <button
@@ -104,10 +105,10 @@ function Header() {
     <nav className='bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200 mb-36'>
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
         <div href='/' className='flex items-center'>
-          <img src={icon} alt='logo' className='h-10 w-10' />
-          <span className='self-center text-xl font-semibold whitespace-nowrap'>
+          <img src={Logo} alt='logo' className='h-14 w-26' />
+          {/* <span className='self-center text-xl font-semibold whitespace-nowrap'>
             Learn Lab
-          </span>
+          </span> */}
         </div>
         <div className='flex md:order-2'>
           <Link to='/login'>
