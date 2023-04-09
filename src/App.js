@@ -14,6 +14,7 @@ import Search from "./Screens/Search";
 import {useContext} from "react";
 import {AuthContext} from "./context/AuthContext";
 import Dashboard from "./Screens/Dashboard";
+import CourseDetail from "./Screens/CourseDetails";
 
 function App() {
   const {currentUser} = useContext(AuthContext);
@@ -35,6 +36,15 @@ function App() {
             element={
               <RequireAuth>
                 <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            exact
+            path='/courseDetail/:id'
+            element={
+              <RequireAuth>
+                <CourseDetail />
               </RequireAuth>
             }
           />

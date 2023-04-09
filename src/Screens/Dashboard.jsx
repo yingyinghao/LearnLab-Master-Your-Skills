@@ -10,8 +10,9 @@ const Dashboard = () => {
   useEffect(() => {
     const getCourses = async () => {
       const coursesSnapshot = await getDocs(collection(db, "courses"));
-      console.log(coursesSnapshot);
-      const coursesData = coursesSnapshot.docs.map((doc) => doc.data());
+      const coursesData = coursesSnapshot.docs.map((doc) => {
+        return {id: doc.id, ...doc.data()};
+      });
       setCourses(coursesData);
     };
 
