@@ -17,3 +17,25 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+button-added {
+    background-color: rgb(120, 55, 217);
+    border: none;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+    height: 50px;
+    width: 150px;
+    transition: background-color 0.5s;
+  }
+
+button-addtofavorite {
+    background-color: rgb(58, 22, 220);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    height: 50px;
+    width: 150px;
+    transition: background-color 0.5s;
+  }
