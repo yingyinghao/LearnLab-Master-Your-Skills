@@ -11,6 +11,7 @@ import Home from "./Screens/Home";
 import LogIn from "./Screens/LogIn";
 import SignUp from "./Screens/SignUp";
 import Search from "./Screens/Search";
+import FavoriteCourses from "./Screens/Favorite";
 import {useContext} from "react";
 import {AuthContext} from "./context/AuthContext";
 import Dashboard from "./Screens/Dashboard";
@@ -54,6 +55,15 @@ function App() {
             element={
               <RequireAuth>
                 <Search />
+              </RequireAuth>
+            }
+          />
+          <Route
+            exact
+            path='/favorite'
+            element={
+              <RequireAuth>
+                <FavoriteCourses />
               </RequireAuth>
             }
           />
