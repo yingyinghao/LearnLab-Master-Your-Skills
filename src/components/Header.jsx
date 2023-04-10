@@ -36,9 +36,6 @@ function Header() {
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
         <div href='/' className='flex items-center'>
           <img src={Logo} alt='logo' className='h-14 w-26' />
-          {/* <span className='self-center text-xl font-semibold whitespace-nowrap'>
-            Learn Lab
-          </span> */}
         </div>
         <div className='flex md:order-2'>
           <button
@@ -106,9 +103,6 @@ function Header() {
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
         <div href='/' className='flex items-center'>
           <img src={Logo} alt='logo' className='h-14 w-26' />
-          {/* <span className='self-center text-xl font-semibold whitespace-nowrap'>
-            Learn Lab
-          </span> */}
         </div>
         <div className='flex md:order-2'>
           <Link to='/login'>
