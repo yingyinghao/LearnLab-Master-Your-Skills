@@ -1,6 +1,7 @@
 import React from "react";
 import courseDataList from "../Data/courseDataList";
 import { useState } from "react";
+import Card from "../components/Card";
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,7 +35,7 @@ function Search() {
         />
 
         <button
-          className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-20 py-3 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring active:text-blue-500"
+          className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-20 py-3 text-sm font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring active:text-blue-500"
           style={{
             padding: "10px 20px",
             borderRadius: "5px",
@@ -61,25 +62,13 @@ function Search() {
       >
         {filteredCourses.map((course) => {
           return (
-            <div key={course.id} style={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)", borderRadius: "5px", overflow: "hidden", backgroundColor: "#fff", marginBottom: "0" }}>
-              <img src={course.imageUrl} alt={course.courseName} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
-              <div style={{ padding: "20px" }}>
-                <h3 style={{ margin: "0 0 10px" }}>{course.courseName}</h3>
-
-                <div style={{ marginBottom: "0" }}>
-                  <p style={{ margin: "0" }}>By {course.authorName}</p>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0" }}>
-                    <p style={{ margin: "0" }}>Reviews: {course.reviews}</p>
-                    <p style={{ margin: "0" }}>Reviewers: {course.reviewers}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Card courseData={course} />
           );
         })}
       </div>
     </>
   );
 }
+
 
 export default Search;
