@@ -4,6 +4,7 @@ import {getFirestore, doc, getDoc} from "firebase/firestore";
 import {AuthContext} from "../context/AuthContext";
 import EnrolledDetail from "../components/EnrolledDetail";
 import NotEnrolledDetail from "../components/NotEnrolledDetail";
+import courseDataList from "../Data/courseDataList";
 
 const db = getFirestore();
 
@@ -15,11 +16,10 @@ function CourseDetails() {
   const {currentUser} = useContext(AuthContext);
 
   useEffect(() => {
-    const getCourse = async () => {
-      const coursesDocRef = doc(db, "courses", id);
-      const courseDoc = await getDoc(coursesDocRef);
-      if (courseDoc.exists()) {
-        setCourseData(courseDoc.data());
+    const getCourse = async (id) => {
+      const course = courseDataList.find((data) => data.id === Number(id));
+      if (course) {
+        setCourseData(course);
       }
     };
 
@@ -29,13 +29,20 @@ function CourseDetails() {
       if (userDoc.exists()) {
         for (const i of userDoc.data().coursesEnrolled) {
           if (JSON.stringify(i.courseUid) === JSON.stringify(id)) {
-            setEnrolled(true);
+            return true;
+          }
+        }
+        for (const i of userDoc.data().coursesCompleted) {
+          if (JSON.stringify(i.courseUid) === JSON.stringify(id)) {
+            return true;
           }
         }
       }
+      return false;
     };
-    getCourse();
-    hasUserEnrolled();
+
+    getCourse(id);
+    hasUserEnrolled().then((enrolled) => setEnrolled(enrolled));
   }, [currentUser.uid, id]);
 
   return (

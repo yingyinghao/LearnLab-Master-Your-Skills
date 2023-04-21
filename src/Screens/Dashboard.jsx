@@ -1,57 +1,43 @@
 import React, {useState, useEffect} from "react";
-import {getFirestore, collection, getDocs} from "firebase/firestore";
+// import {getFirestore, collection, getDocs} from "firebase/firestore";
 import Card from "../components/Card";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-const db = getFirestore();
+import courseDataList from "../Data/courseDataList";
 
 const Dashboard = () => {
   const [courses, setCourses] = useState([]);
+  const [allCourses, setAllCourses] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [uiCourses, setUiCourses] = useState([]);
 
+  const getCourses = async () => {
+    const coursesData = courseDataList.map((data) => {
+      return {id: data.id, ...data};
+    });
+    const firstFiveCourses = coursesData.slice(0, 5);
+    setCourses(firstFiveCourses);
+    setAllCourses(coursesData);
+  };
+
   useEffect(() => {
-    const getCourses = async () => {
-      const coursesSnapshot = await getDocs(collection(db, "courses"));
-      const coursesData = coursesSnapshot.docs.map((doc) => {
-        return {id: doc.id, ...doc.data()};
-      });
-      setCourses(coursesData);
-      // setLoading(false);
-    };
-
-    const getUiCourses = async () => {
-      if (courses) {
-        let totalCourses = [];
-        for (let i of courses) {
-          if (i.tags.includes("ui")) {
-            totalCourses.push(i);
-          }
-        }
-        setUiCourses(totalCourses);
-        setLoading(false);
-      }
-    };
     getCourses();
-    getUiCourses();
-  }, [courses]);
+  }, []);
 
-  // useEffect(() => {
-  //   if (Data) {
-  //     let totalCourses = [];
-  //     for (let i of Data) {
-  //       console.log(i);
-  //       if (i.tags.includes("react")) {
-  //         totalCourses.push(i);
-  //       }
-  //     }
-  //     setReactCourses(totalCourses);
-  //     setLoading(false);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (allCourses) {
+      let totalCourses = [];
+      for (let i of allCourses) {
+        if (i.tags.includes("ui")) {
+          totalCourses.push(i);
+        }
+      }
+      setUiCourses(totalCourses);
+      setLoading(false);
+    }
+  }, [allCourses]);
 
   const settings = {
     dots: true,

@@ -19,11 +19,22 @@ const EnrolledDetail = ({courseData}) => {
     const getPlayTime = async () => {
       const userDocRef = doc(db, "users", currentUser.uid);
       const userDoc = await getDoc(userDocRef);
-
+      let courseFound = false;
       if (userDoc.exists()) {
-        for (const i of userDoc.data().coursesEnrolled) {
-          if (i.courseUid === id) {
-            setPlayed(i.playedTime);
+        if (!courseFound) {
+          for (const i of userDoc.data().coursesEnrolled) {
+            if (i.courseUid === id) {
+              setPlayed(i.playedTime);
+              courseFound = true;
+            }
+          }
+        }
+        if (!courseFound) {
+          for (const i of userDoc.data().coursesCompleted) {
+            if (i.courseUid === id) {
+              setPlayed(0);
+              courseFound = true;
+            }
           }
         }
       }
@@ -50,8 +61,29 @@ const EnrolledDetail = ({courseData}) => {
     await setDoc(userDocRef, {coursesEnrolled}, {merge: true});
   };
 
-  const handleEnded = () => {
-    // setPlayed(0);
+  const handleEnded = async () => {
+    // When video ends, remove the course from the coursesEnrolled to coursesCompleted
+
+    // Remove the course from coursesEnrolled
+    const userDocRef = doc(db, "users", currentUser.uid);
+    const userDoc = await getDoc(userDocRef);
+    const coursesEnrolled = userDoc.data().coursesEnrolled;
+    const courseIndex = coursesEnrolled.findIndex(
+      (course) => course.courseUid === id
+    );
+    coursesEnrolled.splice(courseIndex, 1);
+
+    // Add the course to coursesCompleted
+    const coursesCompleted = userDoc.data().coursesCompleted;
+    const newCompletedCourse = {courseUid: id, completedAt: new Date()};
+    coursesCompleted.push(newCompletedCourse);
+
+    // Update the user document in Firestore
+    await setDoc(
+      userDocRef,
+      {coursesEnrolled: coursesEnrolled, coursesCompleted: coursesCompleted},
+      {merge: true}
+    );
   };
 
   const handleStart = () => {

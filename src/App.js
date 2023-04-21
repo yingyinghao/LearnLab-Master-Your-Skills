@@ -16,6 +16,7 @@ import {useContext} from "react";
 import {AuthContext} from "./context/AuthContext";
 import Dashboard from "./Screens/Dashboard";
 import CourseDetail from "./Screens/CourseDetails";
+import MyCourses from "./Screens/MyCourses";
 
 function App() {
   const {currentUser} = useContext(AuthContext);
@@ -55,6 +56,15 @@ function App() {
             element={
               <RequireAuth>
                 <Search />
+              </RequireAuth>
+            }
+          />
+          <Route
+            exact
+            path='/mycourses'
+            element={
+              <RequireAuth>
+                <MyCourses />
               </RequireAuth>
             }
           />
