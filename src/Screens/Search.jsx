@@ -1,6 +1,6 @@
 import React from "react";
 import courseDataList from "../Data/courseDataList";
-import { useState } from "react";
+import {useState} from "react";
 import Card from "../components/Card";
 
 function Search() {
@@ -16,59 +16,27 @@ function Search() {
 
   return (
     <>
-      <p style={{ marginTop: "100px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-        Start your journey by searching for a course you are interested in.
-      </p>
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }}>
+      <div className='flex justify-center items-center mt-24'>
         <input
-          type="text"
-          placeholder="Search"
-          style={{
-            padding: "10px",
-            borderRadius: "5px",
-            border: "1px solid #ccc",
-            marginRight: "10px",
-            width: "200px",
-            fontSize: "16px",
-          }}
+          type='text'
+          placeholder='Search Courses...'
+          className='px-4 py-2 rounded-md border border-gray-300 mr-4 w-64 text-base'
           onChange={handleSearch}
         />
-
-        <button
-          className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-20 py-3 text-sm font-medium text-white transition hover:bg-blue-600 focus:outline-none focus:ring active:text-blue-500"
-          style={{
-            padding: "10px 20px",
-            borderRadius: "5px",
-            backgroundColor: "#ADD8E6", // light blue color
-            color: "white",
-            fontSize: "16px",
-            border: "none",
-            cursor: "pointer",
-            transition: "all 0.3s ease", // add transition effect
-          }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#007AFF")} // change background color on hover
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "#ADD8E6")} // revert background color when hover is off
-        >
+        <button className='w-28 h-10 rounded-md bg-blue-600 hover:bg-blue-700 flex items-center justify-center text-sm font-medium text-white'>
           Search
         </button>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridGap: "20px",
-          marginTop: "20px",
-        }}
-      >
+      <p className='mt-4 text-gray-400 flex justify-center items-center'>
+        Start your journey by searching for a course you are interested in.
+      </p>
+      <div className='grid grid-cols-3 gap-16 mt-8 px-28 justify-items-center align-items-center'>
         {filteredCourses.map((course) => {
-          return (
-            <Card courseData={course} />
-          );
+          return <Card courseData={course} />;
         })}
       </div>
     </>
   );
 }
-
 
 export default Search;
