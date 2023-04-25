@@ -5,7 +5,7 @@ const courseDataList = [{
         authorName: "Dr. Jaimin Patel",
         courseName: "React - The Complete Guide To React from Zero to Advance ",
         reviews: "4.7",
-        reviewers: "1,042",
+        reviewers: "1042",
         info: "We focus on industry leading platforms so that you can be prepared for your next job. Then we teach all we can about them. This approach has several benefits for individuals seeking to advance their careers in that industry. Learning about these industry leading platforms makes them more marketable to potential employers. This is because many companies prefer to hire candidates who are already familiar with the tools and technologies that they use on a daily basis, rather than spending time and resources on training them. ",
         learningOutcomes: [
             "Understand the fundamentals of React, including JSX syntax, components, and state management.",
@@ -60,7 +60,7 @@ const courseDataList = [{
         authorName: "John Smith",
         courseName: "Advanced SwiftUI - Master the Art of Component-Based iOS UI Development",
         reviews: "4.6",
-        reviewers: "1,293",
+        reviewers: "1293",
         info: "We focus on industry leading platforms so that you can be prepared for your next job. Then we teach all we can about them. This approach has several benefits for individuals seeking to advance their careers in that industry. Learning about these industry leading platforms makes them more marketable to potential employers. This is because many companies prefer to hire candidates who are already familiar with the tools and technologies that they use on a daily basis, rather than spending time and resources on training them. ",
         learningOutcomes: [
             "Understand the fundamentals of React, including JSX syntax, components, and state management.",
@@ -114,7 +114,7 @@ const courseDataList = [{
         authorName: "Bob Lee",
         courseName: "Learn Data Science with Python for Beginners",
         reviews: "4.5",
-        reviewers: "1,573",
+        reviewers: "1573",
         info: "We focus on industry leading platforms so that you can be prepared for your next job. Then we teach all we can about them. This approach has several benefits for individuals seeking to advance their careers in that industry. Learning about these industry leading platforms makes them more marketable to potential employers. This is because many companies prefer to hire candidates who are already familiar with the tools and technologies that they use on a daily basis, rather than spending time and resources on training them. ",
         learningOutcomes: [
             "Understand the fundamentals of React, including JSX syntax, components, and state management.",
