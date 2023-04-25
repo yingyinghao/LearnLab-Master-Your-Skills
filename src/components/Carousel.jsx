@@ -35,6 +35,24 @@ function Carousel() {
     centerMode: true,
     centerPadding: "50px",
     responsive: [
+      // {
+      //   breakpoint: 2561,
+      //   settings: {
+      //     slidesToShow: 4,
+      //     slidesToScroll: 1,
+      //     infinite: true,
+      //     dots: true,
+      //   },
+      // },
+      {
+        breakpoint: 1441,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
