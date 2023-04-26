@@ -2,7 +2,7 @@ import React from "react";
 
 function Testimonials() {
   return (
-    <section className=''>
+    <section id='testimonials'>
       <div className='container px-6 py-12 mx-auto'>
         <div className='grid items-center gap-4 xl:grid-cols-5'>
           <div className='max-w-2xl mx-auto my-8 space-y-6 text-center xl:col-span-2 xl:text-left'>

@@ -5,7 +5,6 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
-
 import Header from "../src/components/Header.jsx";
 import Home from "./Screens/Home";
 import LogIn from "./Screens/LogIn";
@@ -24,14 +23,41 @@ function App() {
     return currentUser ? children : <Navigate to='/login' />;
   };
 
+  const AuthDone = ({children}) => {
+    return currentUser ? <Navigate to='/dashboard' replace /> : children;
+  };
+
   return (
     <>
       <Router>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route exact path='/login' element={<LogIn />} />
-          <Route exact path='/signup' element={<SignUp />} />
+          <Route
+            path='/'
+            element={
+              <AuthDone>
+                <Home />
+              </AuthDone>
+            }
+          />
+          <Route
+            exact
+            path='/login'
+            element={
+              <AuthDone>
+                <LogIn />
+              </AuthDone>
+            }
+          />
+          <Route
+            exact
+            path='/signup'
+            element={
+              <AuthDone>
+                <SignUp />
+              </AuthDone>
+            }
+          />
           <Route
             exact
             path='/dashboard'
@@ -78,7 +104,6 @@ function App() {
             }
           />
         </Routes>
-        {/* <Footer /> */}
       </Router>
     </>
   );

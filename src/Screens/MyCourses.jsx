@@ -80,7 +80,7 @@ function MyCourses() {
           <h2 className='col-span-4 -mb-3 mx-auto text-xl text-blue-600 font-semibold'>
             You can find courses that you like at Dashboard
           </h2>
-          <button className='text-white col-span-4 w-48 mt-4 items-center font-semibold py-2 px-4 rounded-2xl bg-blue-600 hover:bg-blue-700'>
+          <button className='text-white col-span-4 mx-auto w-48 mt-4 items-center justify-center font-semibold py-2 px-4 rounded-2xl bg-blue-600 hover:bg-blue-700'>
             Go to Dashboard
           </button>
         </>

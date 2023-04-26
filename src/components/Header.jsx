@@ -3,8 +3,7 @@ import {Link} from "react-router-dom";
 // import icon from "../components/img/icon.png";
 import {AuthContext} from "../context/AuthContext";
 import {getAuth, signOut} from "firebase/auth";
-import {useNavigate} from "react-router-dom";
-// import {auth} from "../firebase";
+import {NavLink, useNavigate} from "react-router-dom";
 import Logo from "../Logo_LL.png";
 import {BiUser} from "react-icons/bi";
 
@@ -78,34 +77,52 @@ function Header() {
           id='navbar-sticky'>
           <ul className='flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium md:border-0 md:bg-white'>
             <li>
-              <Link to='/dashboard'>
-                <div
-                  className='block py-2 pl-3 pr-4 text-blue-700 bg-blue-200 rounded md:bg-transparent md:text-blue-700 md:p-0'
-                  aria-current='page'>
-                  Dashboard
-                </div>
-              </Link>
+              <NavLink
+                to='/dashboard'
+                className={({isActive}) => {
+                  return (
+                    `font-semibold mr-4 hover:text-blue-600 ` +
+                    (isActive ? "text-blue-600" : "text-gray-600")
+                  );
+                }}>
+                Dashboard
+              </NavLink>
             </li>
             <li>
-              <Link to='/search'>
-                <div className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'>
-                  Search
-                </div>
-              </Link>
+              <NavLink
+                to='/search'
+                className={({isActive}) => {
+                  return (
+                    `font-semibold mr-4 hover:text-blue-600 ` +
+                    (isActive ? "text-blue-600" : "text-gray-600")
+                  );
+                }}>
+                Search
+              </NavLink>
             </li>
             <li>
-              <Link to='/mycourses'>
-                <div className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'>
-                  My Courses
-                </div>
-              </Link>
+              <NavLink
+                to='/mycourses'
+                className={({isActive}) => {
+                  return (
+                    `font-semibold mr-4 hover:text-blue-600 ` +
+                    (isActive ? "text-blue-600" : "text-gray-600")
+                  );
+                }}>
+                My Courses
+              </NavLink>
             </li>
             <li>
-              <Link to='/favorite'>
-                <div className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'>
-                  Favorite
-                </div>
-              </Link>
+              <NavLink
+                to='/favorite'
+                className={({isActive}) => {
+                  return (
+                    `font-semibold  hover:text-blue-600 ` +
+                    (isActive ? "text-blue-600" : "text-gray-600")
+                  );
+                }}>
+                Favorites
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -116,9 +133,9 @@ function Header() {
   const loggedOutNav = (
     <nav className='bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200 mb-36'>
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
-        <div href='/' className='flex items-center'>
+        <Link to='/' className='flex items-center'>
           <img src={Logo} alt='logo' className='h-14 w-26' />
-        </div>
+        </Link>
         <div className='flex md:order-2'>
           <Link to='/login'>
             <button
@@ -156,42 +173,61 @@ function Header() {
             </svg>
           </button>
         </div>
-        <div
+        {/* <div
           className='items-center justify-between hidden w-full md:flex md:w-auto md:order-1'
           id='navbar-sticky'>
           <ul className='flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium md:border-0 md:bg-white'>
             <li>
-              <Link>
-                <div
-                  className='block py-2 pl-3 pr-4 text-blue-700 bg-blue-200 rounded md:bg-transparent md:text-blue-700 md:p-0'
-                  aria-current='page'>
-                  Home
-                </div>
-              </Link>
+              <NavLink
+                exact
+                to='/#hero'
+                activeClassName='text-green-600 font-semibold mr-8 hover:text-green-600 text-gray-600'
+                className={({isActive}) =>
+                  `hover:text-blue-600 ${
+                    isActive ? "text-blue-600" : "text-gray-600"
+                  }`
+                }>
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link>
-                <div className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'>
-                  About
-                </div>
-              </Link>
+              <NavLink
+                to='#courses'
+                activeClassName='text-green-600 font-semibold mr-8 hover:text-green-600 text-gray-600'
+                className={({isActive}) =>
+                  `hover:text-blue-600 ${
+                    isActive ? "text-blue-600" : "text-gray-600"
+                  }`
+                }>
+                Courses
+              </NavLink>
             </li>
             <li>
-              <Link>
-                <div className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'>
-                  Testimonials
-                </div>
-              </Link>
+              <NavLink
+                to='#about'
+                activeClassName='text-green-600 font-semibold mr-8 hover:text-green-600 text-gray-600'
+                className={({isActive}) =>
+                  `hover:text-blue-600 ${
+                    isActive ? "text-blue-600" : "text-gray-600"
+                  }`
+                }>
+                About
+              </NavLink>
             </li>
             <li>
-              <Link>
-                <div className='block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0'>
-                  Courses
-                </div>
-              </Link>
+              <NavLink
+                to='#testimonials'
+                activeClassName='text-green-600 font-semibold mr-8 hover:text-green-600 text-gray-600'
+                className={({isActive}) =>
+                  `hover:text-blue-600 ${
+                    isActive ? "text-blue-600" : "text-gray-600"
+                  }`
+                }>
+                Testimonials
+              </NavLink>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
