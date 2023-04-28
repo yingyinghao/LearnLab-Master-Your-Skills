@@ -18,6 +18,7 @@ const NotEnrolledDetail = ({courseData}) => {
         courseUid: id,
         playedTime: 0,
       };
+
       await updateDoc(userDocRef, {
         coursesEnrolled: arrayUnion(objToUpdate),
       });
