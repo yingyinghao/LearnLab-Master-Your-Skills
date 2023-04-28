@@ -10,9 +10,13 @@ function Search() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCourses = courseDataList.filter((course) => {
+  let filteredCourses = courseDataList.filter((course) => {
     return course.courseName.toLowerCase().includes(searchTerm.toLowerCase());
   });
+
+   filteredCourses = filteredCourses.sort((a, b) => {
+    return parseInt(a.reviews) > parseInt(b.reviews) ? 1 : -1;
+   });
 
   return (
     <>
