@@ -16,6 +16,7 @@ import {AuthContext} from "./context/AuthContext";
 import Dashboard from "./Screens/Dashboard";
 import CourseDetail from "./Screens/CourseDetails";
 import MyCourses from "./Screens/MyCourses";
+import Error404 from "./Screens/Error404";
 
 function App() {
   const {currentUser} = useContext(AuthContext);
@@ -103,6 +104,7 @@ function App() {
               </RequireAuth>
             }
           />
+          <Route exact path='*' element={<Error404 />} />
         </Routes>
       </Router>
     </>

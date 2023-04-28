@@ -53,8 +53,8 @@ function FavoriteCourses() {
   };
 
   return (
-    <div className='mt-24'>
-      <div className='flex justify-center items-center mb-4 bg-blue-600 text-white p-4 w-96 mx-auto rounded-md'>
+    <div className='mt-36 md:mt-24'>
+      <div className='flex justify-center items-center mb-4 bg-blue-600 text-white p-4 w-72 md:w-96 mx-auto rounded-md'>
         <div className='font-bold'>Favorite Courses</div>
         <div className='font-bold mx-4 text-2xl'>|</div>
         <div>
@@ -76,12 +76,17 @@ function FavoriteCourses() {
         </div>
       </div>
 
-      <p className='w-1/2 mt-4 mb-6 mx-auto text-center text-gray-400'>
+      <p className='w-full md:w-1/2 mt-4 mb-6 mx-auto text-center text-gray-400'>
         Here are the most popular courses, based on the combination of course
         scores and the total number of participants. We hope this helps you with
         your course selection.
       </p>
-      <div className='grid grid-cols-3 gap-16 mt-8 px-28 justify-items-center align-items-center'>
+      {/* <div className='grid grid-cols-3 gap-16 mt-8 px-28 justify-items-center align-items-center'>
+        {topCourses.map((course) => {
+          return <Card courseData={course} />;
+        })}
+      </div> */}
+      <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8 px-6 sm:px-12 md:px-20 lg:px-28 justify-items-center'>
         {topCourses.map((course) => {
           return <Card courseData={course} />;
         })}

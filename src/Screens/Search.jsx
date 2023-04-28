@@ -16,7 +16,7 @@ function Search() {
 
   return (
     <>
-      <div className='flex justify-center items-center mt-24'>
+      <div className='flex justify-center items-center mt-36 md:mt-24'>
         <input
           type='text'
           placeholder='Search Courses...'
@@ -30,7 +30,12 @@ function Search() {
       <p className='mt-4 text-gray-400 flex justify-center items-center'>
         Start your journey by searching for a course you are interested in.
       </p>
-      <div className='grid grid-cols-3 gap-16 mt-8 px-28 justify-items-center align-items-center'>
+      {/* <div className='grid grid-cols-3 gap-16 mt-8 px-28 justify-items-center align-items-center'>
+        {filteredCourses.map((course) => {
+          return <Card courseData={course} />;
+        })}
+      </div> */}
+      <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3  mt-8 px-6 sm:px-12 md:px-20 lg:px-28 justify-items-center'>
         {filteredCourses.map((course) => {
           return <Card courseData={course} />;
         })}

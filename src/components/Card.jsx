@@ -36,7 +36,10 @@ function Card({courseData}) {
               <div className='mt-1.5'>
                 <p className='font-medium'>
                   {reviews}
-                  <span className=' text-gray-500'> ({reviewers})</span>
+                  <span className=' text-gray-500'>
+                    {" "}
+                    ({Number(reviewers).toLocaleString()})
+                  </span>
                 </p>
               </div>
             </div>
