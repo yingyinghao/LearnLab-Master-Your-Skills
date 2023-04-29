@@ -22,9 +22,10 @@ const MyAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [photo, setPhoto] = useState(user.photoURL);
+  // const [photo, setPhoto] = useState(user.photoURL);
   const [photoChanged, setPhotoChanged] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isGoogleProvider, setIsGoogleProvider] = useState(false);
 
   const logToken = async (user) => {
     console.log(await user.getIdToken());
@@ -33,12 +34,12 @@ const MyAccount = () => {
     logToken(user);
   }
 
-  const handlePhotoChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setPhoto(e.target.files[0]);
-      setPhotoChanged(true);
-    }
-  };
+  // const handlePhotoChange = (e) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     setPhoto(e.target.files[0]);
+  //     setPhotoChanged(true);
+  //   }
+  // };
 
   // For changing the value of display name when the valuye of the first name or last name changes.
   useEffect(() => {
@@ -50,6 +51,15 @@ const MyAccount = () => {
       if (user) {
         setUserId(user.uid);
         setEmail(user.email);
+
+        console.log("This got fired!");
+
+        const googleProvider = user.providerData.some(
+          (provider) => provider.providerId === "google.com"
+        );
+        setIsGoogleProvider(googleProvider);
+
+        console.log("This got fired!");
 
         try {
           const userDoc = await getDoc(doc(db, "users", user.uid));
@@ -134,7 +144,7 @@ const MyAccount = () => {
                 type="text"
                 id="FirstName"
                 value={firstName}
-                // onChange={(e) => setFirstName(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
                 className="w-full text-white bg-blue-700 rounded py-2 px-4"
               />
             </div>
@@ -148,12 +158,12 @@ const MyAccount = () => {
               <input
                 type="text"
                 id="LastName"
-                // value={lastName}
-                // onChange={(e) => setLastName(e.target.value)}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 className="w-full text-white bg-blue-700 rounded py-2 px-4"
               />
             </div>
-            {
+            {!isGoogleProvider && (
               <>
                 <div className="mb-4">
                   <label
@@ -190,7 +200,7 @@ const MyAccount = () => {
                   />
                 </div>
               </>
-            }
+            )}
             {errorMessage && (
               <div className="text-red-500 mt-2">{errorMessage}</div>
             )}
