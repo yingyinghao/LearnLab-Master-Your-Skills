@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import { auth, signUp, db } from "../firebase";
 import { auth, signUp } from "../firebase";
-import { useState } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 // import firebase from "firebase/compat/app";
 import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
 const db = getFirestore();
