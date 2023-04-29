@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useContext } from "react";
-import { auth } from "../firebase";
-import { AuthContext } from "../context/AuthContext";
+import React, {useEffect, useState, useContext} from "react";
+import {auth} from "../firebase";
+import {AuthContext} from "../context/AuthContext";
 // import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, doc, updateDoc, getDoc } from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { updateProfile, updatePassword, signOut, getAuth } from "firebase/auth";
+import {getFirestore, doc, updateDoc, getDoc} from "firebase/firestore";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {Link, useNavigate} from "react-router-dom";
+import {updateProfile, updatePassword, signOut, getAuth} from "firebase/auth";
 
 const db = getFirestore();
 
 const MyAccount = () => {
   const [user, loading] = useAuthState(auth);
-  const { currentUser } = useContext(AuthContext);
+  const {currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [userId, setUserId] = useState(null);
@@ -75,13 +75,13 @@ const MyAccount = () => {
     setEditing(true);
   };
 
-  const { dispatch } = useContext(AuthContext);
+  const {dispatch} = useContext(AuthContext);
   const handleLogout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
         console.log("Successfully Logged Out!");
-        dispatch({ type: "LOGOUT" });
+        dispatch({type: "LOGOUT"});
         navigate("/login");
       })
       .catch((error) => {
@@ -118,105 +118,104 @@ const MyAccount = () => {
 
   return (
     <>
-      <div className="max-w-xl lg:max-w-3xl mx-auto py-8">
+      <div className='max-w-xl lg:max-w-3xl mx-auto py-8 mt-24'>
         {editing ? (
           <>
-            <div className="mb-4">
+            <div className='mb-4'>
+              <h3 className='text-gray-800 mb-6 text-3xl font-bold'>
+                Update Your Information,
+              </h3>
               <label
-                htmlFor="FirstName"
-                className="block text-white text-lg font-bold mb-2"
-              >
+                htmlFor='FirstName'
+                className='block text-gray-700 text-lg font-bold mb-2'>
                 First Name:
               </label>
               <input
-                type="text"
-                id="FirstName"
+                type='text'
+                id='FirstName'
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="w-full text-white bg-blue-700 rounded py-2 px-4"
+                className='w-full text-gray-700 border border-gray-300 rounded py-2 px-4'
               />
             </div>
-            <div className="mb-4">
+            <div className='mb-4'>
               <label
-                htmlFor="LastName"
-                className="block text-white text-lg font-bold mb-2"
-              >
+                htmlFor='LastName'
+                className='block text-gray-700 text-lg font-bold mb-2'>
                 Last Name:
               </label>
               <input
-                type="text"
-                id="LastName"
+                type='text'
+                id='LastName'
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="w-full text-white bg-blue-700 rounded py-2 px-4"
+                className='w-full text-gray-700 border border-gray-300 rounded py-2 px-4'
               />
             </div>
             {!isGoogleProvider && (
               <>
-                <div className="mb-4">
+                <div className='mb-4'>
                   <label
-                    htmlFor="Password"
-                    className="block text-white text-lg font-bold mb-2"
-                  >
+                    htmlFor='Password'
+                    className='block text-gray-700 text-lg font-bold mb-2'>
                     New Password:
                   </label>
                   <input
-                    type="password"
-                    id="Password"
+                    type='password'
+                    id='Password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full text-gray-700 bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring"
+                    className='w-full text-gray-700 bg-white border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring'
                   />
                 </div>
-                <div className="col-span-6 sm:col-span-3">
+                <div className='col-span-6 sm:col-span-3'>
                   <label
-                    for="PasswordConfirmation"
-                    className="block text-white text-lg font-bold mb-2"
-                  >
+                    for='PasswordConfirmation'
+                    className='block text-gray-700 text-lg font-bold mb-2'>
                     Password Confirmation
                   </label>
 
                   <input
-                    type="password"
-                    id="PasswordConfirmation"
-                    name="passwordConfirmation"
-                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                    type='password'
+                    id='PasswordConfirmation'
+                    name='passwordConfirmation'
+                    placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'
                     value={passwordConfirmation}
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
-                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring"
+                    className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring'
                     required
                   />
                 </div>
               </>
             )}
             {errorMessage && (
-              <div className="text-red-500 mt-2">{errorMessage}</div>
+              <div className='text-red-500 mt-2'>{errorMessage}</div>
             )}
             <button
               onClick={handleSaveClick}
-              className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded transition hover:bg-blue-500 focus:outline-none focus:ring"
-            >
+              className='w-full my-6 bg-blue-600 text-white font-bold py-2 px-4 rounded transition hover:bg-blue-500 focus:outline-none focus:ring'>
               Save
             </button>
           </>
         ) : (
           <>
-            <h3 className="text-white text-xl font-bold mb-6">
-              Email: {email}
+            <h3 className='text-gray-800 text-3xl font-bold mb-2'>
+              Welcome User,
             </h3>
+            <p className='text-gray-400 text-md font-semibold my-3'>
+              You can change your Personal Info Here!
+            </p>
             <button
               onClick={handleEditClick}
-              className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded transition hover:bg-blue-500 focus:outline-none focus:ring"
-            >
+              className='w-full my-3 bg-blue-600 text-white font-bold py-2 px-4 rounded transition hover:bg-blue-500 focus:outline-none focus:ring'>
               Edit
             </button>
 
-            <div className="flex items-center mt-4 lg:mt-0">
+            <div className='flex items-center mt-4 lg:mt-0'>
               <button
-                className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded transition hover:bg-blue-500 focus:outline-none focus:ring"
-                aria-label="show notifications"
-                onClick={handleLogout}
-              >
+                className='w-full bg-blue-600 text-white font-bold py-2 px-4 rounded transition hover:bg-blue-500 focus:outline-none focus:ring'
+                aria-label='show notifications'
+                onClick={handleLogout}>
                 Logout
               </button>
             </div>
