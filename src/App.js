@@ -11,21 +11,22 @@ import LogIn from "./Screens/LogIn";
 import SignUp from "./Screens/SignUp";
 import Search from "./Screens/Search";
 import FavoriteCourses from "./Screens/Favorite";
-import {useContext} from "react";
-import {AuthContext} from "./context/AuthContext";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 import Dashboard from "./Screens/Dashboard";
 import CourseDetail from "./Screens/CourseDetails";
 import MyCourses from "./Screens/MyCourses";
 import Error404 from "./Screens/Error404";
+import MyAccount from "./Screens/MyAccount";
 
 function App() {
-  const {currentUser} = useContext(AuthContext);
-  const RequireAuth = ({children}) => {
-    return currentUser ? children : <Navigate to='/login' />;
+  const { currentUser } = useContext(AuthContext);
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/login" />;
   };
 
-  const AuthDone = ({children}) => {
-    return currentUser ? <Navigate to='/dashboard' replace /> : children;
+  const AuthDone = ({ children }) => {
+    return currentUser ? <Navigate to="/dashboard" replace /> : children;
   };
 
   return (
@@ -34,7 +35,7 @@ function App() {
         <Header />
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               <AuthDone>
                 <Home />
@@ -43,7 +44,7 @@ function App() {
           />
           <Route
             exact
-            path='/login'
+            path="/login"
             element={
               <AuthDone>
                 <LogIn />
@@ -52,7 +53,7 @@ function App() {
           />
           <Route
             exact
-            path='/signup'
+            path="/signup"
             element={
               <AuthDone>
                 <SignUp />
@@ -61,7 +62,7 @@ function App() {
           />
           <Route
             exact
-            path='/dashboard'
+            path="/dashboard"
             element={
               <RequireAuth>
                 <Dashboard />
@@ -70,7 +71,7 @@ function App() {
           />
           <Route
             exact
-            path='/courseDetail/:id'
+            path="/courseDetail/:id"
             element={
               <RequireAuth>
                 <CourseDetail />
@@ -79,7 +80,7 @@ function App() {
           />
           <Route
             exact
-            path='/search'
+            path="/search"
             element={
               <RequireAuth>
                 <Search />
@@ -88,7 +89,7 @@ function App() {
           />
           <Route
             exact
-            path='/mycourses'
+            path="/mycourses"
             element={
               <RequireAuth>
                 <MyCourses />
@@ -97,14 +98,23 @@ function App() {
           />
           <Route
             exact
-            path='/favorite'
+            path="/favorite"
             element={
               <RequireAuth>
                 <FavoriteCourses />
               </RequireAuth>
             }
           />
-          <Route exact path='*' element={<Error404 />} />
+          <Route
+            exact
+            path="/myaccount"
+            element={
+              <RequireAuth>
+                <MyAccount />
+              </RequireAuth>
+            }
+          />
+          <Route exact path="*" element={<Error404 />} />
         </Routes>
       </Router>
     </>

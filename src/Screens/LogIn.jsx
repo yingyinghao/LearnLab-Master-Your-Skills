@@ -1,18 +1,128 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, signIn, popUpSignIn } from "../firebase";
-import { useState, useContext } from "react";
+import { auth, signIn } from "../firebase";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  sendEmailVerification,
+  signOut,
+} from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+const db = getFirestore();
 
 function LogIn() {
+  //   const handleGoogleSignIn = () => {
+  //     signInWithPopup(auth, new GoogleAuthProvider())
+  //       .then((result) => {
+  //         // The signed-in user info.
+  //         const user = result.user;
+  //         // Do something with the user object...
+  //         dispatch({ type: "LOGIN", payload: user });
+  //         navigate("/dashboard");
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   };
+
+  //   const [error, setError] = useState(false);
+  //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+
+  //   const { dispatch } = useContext(AuthContext);
+
+  //   // console.log(dispatch, 12345);
+  //   const handleLogin = (e) => {
+  //     e.preventDefault();
+
+  //     signIn(auth, email, password)
+  //       .then((userCredential) => {
+  //         // setError(false);
+  //         const user = userCredential.user;
+  //         dispatch({ type: "LOGIN", payload: user });
+  //         navigate("/dashboard");
+  //       })
+  //       .catch((error) => {
+  //         // const errorCode = error.code;
+  //         const errorMessage = error.message;
+  //         // setError(true);
+  //         console.log(errorMessage);
+  //       });
+  //   };
+
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user && user.emailVerified) {
+        const userRef = doc(db, "users", user.uid);
+        await updateDoc(userRef, { emailVerified: true });
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    const checkUserAndRedirect = async () => {
+      if (!loading) {
+        if (user && user.emailVerified) {
+          navigate("/");
+        } else {
+          await auth.signOut();
+          setError("Please verify email to continue...");
+        }
+      }
+    };
+
+    checkUserAndRedirect();
+  }, [user, loading]);
+
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, new GoogleAuthProvider())
-      .then((result) => {
-        // The signed-in user info.
+      .then(async (result) => {
         const user = result.user;
-        // Do something with the user object...
         dispatch({ type: "LOGIN", payload: user });
+        const { displayName, email, uid } = user;
+        const nameParts = displayName.split(" ");
+        const firstName = nameParts[0];
+        const lastName =
+          nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
+
+        const userDocRef = doc(db, "users", uid);
+        const userDoc = await getDoc(userDocRef);
+
+        if (!userDoc.exists()) {
+          const response = await setDoc(userDocRef, {
+            firstName,
+            lastName,
+            displayName,
+            email,
+          })
+            .then(() => {
+              console.log("Document written successfully!");
+            })
+            .catch((error) => {
+              console.error("Error writing document: ", error);
+            });
+        }
         navigate("/dashboard");
       })
       .catch((error) => {
@@ -24,26 +134,43 @@ function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
   const { dispatch } = useContext(AuthContext);
 
+  const resendVerificationEmail = async () => {
+    try {
+      const userCredential = await signIn(auth, email, password);
+      const user = userCredential.user;
+
+      if (!user.emailVerified) {
+        await sendEmailVerification(user);
+        setError("Verification email resent. Please check your inbox.");
+      }
+    } catch (error) {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    }
+  };
+
   // console.log(dispatch, 12345);
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    signIn(auth, email, password)
-      .then((userCredential) => {
-        // setError(false);
-        const user = userCredential.user;
-        dispatch({ type: "LOGIN", payload: user });
-        navigate("/dashboard");
-      })
-      .catch((error) => {
-        // const errorCode = error.code;
-        const errorMessage = error.message;
-        // setError(true);
-        console.log(errorMessage);
-      });
+    try {
+      const userCredential = await signIn(auth, email, password);
+      const user = userCredential.user;
+
+      console.log(`EMAIL VERIFIED? ${user.emailVerified}`);
+
+      // if (user.emailVerified === true) {
+      dispatch({ type: "LOGIN", payload: user });
+      navigate("/");
+      // } else {
+      // setError("Please verify your email before logging in.");
+      // }
+    } catch (error) {
+      const errorMessage = error.message;
+      console.log(errorMessage);
+    }
   };
 
   return (
