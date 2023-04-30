@@ -10,7 +10,7 @@ function Outcomes() {
             <img
               className='absolute -right-0 -bottom-8 xl:-bottom-12 xl:-right-4'
               src='https://cdn.rareblocks.xyz/collection/celebration/images/content/3/dots-pattern.svg'
-              alt=''
+              alt='Outcome'
             />
             <div className='pl-12 pr-6'>
               <img className='relative' src={OutcomeImage} alt='' />

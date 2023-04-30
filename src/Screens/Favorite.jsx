@@ -76,7 +76,7 @@ function FavoriteCourses() {
         </div>
       </div>
 
-      <p className='w-full md:w-1/2 mt-4 mb-6 mx-auto text-center text-gray-400'>
+      <p className='w-full md:w-1/2 mt-4 mb-6 mx-auto text-center text-gray-600'>
         Here are the most popular courses, based on the combination of course
         scores and the total number of participants. We hope this helps you with
         your course selection.

@@ -4,14 +4,14 @@ import {AuthContext} from "../context/AuthContext";
 // import { useAuthState } from "react-firebase-hooks/auth";
 import {getFirestore, doc, updateDoc, getDoc} from "firebase/firestore";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {Link, useNavigate} from "react-router-dom";
-import {updateProfile, updatePassword, signOut, getAuth} from "firebase/auth";
+import {useNavigate} from "react-router-dom";
+import {updatePassword, signOut, getAuth} from "firebase/auth";
 
 const db = getFirestore();
 
 const MyAccount = () => {
   const [user, loading] = useAuthState(auth);
-  const {currentUser} = useContext(AuthContext);
+  // const {currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [userId, setUserId] = useState(null);
@@ -43,14 +43,14 @@ const MyAccount = () => {
         setUserId(user.uid);
         setEmail(user.email);
 
-        console.log("This got fired!");
+        // console.log("This got fired!");
 
         const googleProvider = user.providerData.some(
           (provider) => provider.providerId === "google.com"
         );
         setIsGoogleProvider(googleProvider);
 
-        console.log("This got fired!");
+        // console.log("This got fired!");
 
         try {
           const userDoc = await getDoc(doc(db, "users", user.uid));
@@ -69,7 +69,7 @@ const MyAccount = () => {
     };
 
     fetchUserData();
-  }, [user]);
+  }, [navigate, user]);
 
   const handleEditClick = () => {
     setEditing(true);
@@ -199,10 +199,10 @@ const MyAccount = () => {
           </>
         ) : (
           <>
-            <h3 className='text-gray-800 text-3xl font-bold mb-2'>
+            <h1 className='text-gray-800 text-3xl font-bold mb-2'>
               Welcome User,
-            </h3>
-            <p className='text-gray-400 text-md font-semibold my-3'>
+            </h1>
+            <p className='text-gray-600 text-md font-semibold my-3'>
               You can change your Personal Info Here!
             </p>
             <button

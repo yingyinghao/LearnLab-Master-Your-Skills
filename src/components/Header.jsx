@@ -39,8 +39,12 @@ function Header() {
         </div>
         <div className='flex md:order-2'>
           <Link to='/myaccount'>
+            <label for='accountBtn' className='sr-only'>
+              My accounts Button
+            </label>
             <button
               type='button'
+              id='accountBtn'
               className='text-blue-600 hover:text-blue-800 font-medium rounded-lg text-2xl py-2.5 text-center mr-3 md:mr-5'>
               <BiUser />
             </button>

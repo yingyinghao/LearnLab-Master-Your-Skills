@@ -53,9 +53,9 @@ const NotEnrolledDetail = ({courseData}) => {
       <div className='w-2/6 h-[85vh] px-8 py-8'>
         <div className='grid grid-cols-2 items-center justify-center gap-4 py-2 px-8 mb-6'>
           <div className='col-span-2 justify-center items-center'>
-            <h2 className=' text-2xl font-semibold text-indigo-600 text-center'>
+            <h1 className=' text-2xl font-semibold text-indigo-600 text-center'>
               More Course Information
-            </h2>
+            </h1>
           </div>
 
           <div className='col-span-2  bg-gray-50 rounded-lg transition duration-500 ease-in-out shadow transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-100 flex justify-between items-center p-4'>

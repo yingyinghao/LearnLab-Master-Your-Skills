@@ -129,9 +129,9 @@ const EnrolledDetail = ({courseData}) => {
             <div className='w-1/4 h-full px-8 pt-8'>
               <div className='grid grid-cols-1 gap-4 py-2 px-8'>
                 <div className='justify-center items-center'>
-                  <h2 className='text-xl font-semibold text-indigo-600 text-center'>
+                  <h1 className='text-xl font-semibold text-indigo-600 text-center'>
                     More Course Information
-                  </h2>
+                  </h1>
                 </div>
                 <div className='bg-gray-50 rounded-lg transition duration-500 ease-in-out shadow transform hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-100 flex justify-between items-center p-4'>
                   <p className='text-lg text-gray-600'>Author</p>
