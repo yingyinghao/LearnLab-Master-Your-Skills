@@ -8,7 +8,7 @@ function Footer() {
           <h1 className='text-3xl font-bold'>Learn Lab</h1>
         </div>
 
-        <p className='mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500'>
+        <p className='mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-700'>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
           consequuntur amet culpa cum itaque neque.
         </p>

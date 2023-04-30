@@ -30,14 +30,14 @@ function Testimonials() {
                   <div className='flex items-center mt-4 space-x-4'>
                     <img
                       src={"https://source.unsplash.com/50x50/?portrait?1"}
-                      alt=''
+                      alt='testimonial 1'
                       className='w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500'
                     />
                     <div>
                       <p className='text-lg font-semibold text-gray-600'>
                         Leroy Jenkins
                       </p>
-                      <p className='text-sm font-medium text-gray-400'>
+                      <p className='text-sm font-medium text-gray-600'>
                         CTO of Company Co.
                       </p>
                     </div>
@@ -55,15 +55,15 @@ function Testimonials() {
                   <div className='flex items-center mt-4 space-x-4'>
                     <img
                       src={"https://source.unsplash.com/50x50/?portrait?2"}
-                      alt=''
+                      alt='testimonial 2'
                       className='w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500'
                     />
                     <div>
                       <p className='text-lg font-semibold text-gray-600'>
-                        Leroy Jenkins
+                        Meet Doshi
                       </p>
-                      <p className='text-sm font-medium text-gray-400'>
-                        CTO of Company Co.
+                      <p className='text-sm font-medium text-gray-600'>
+                        Developer at Trionic Tech.
                       </p>
                     </div>
                   </div>
@@ -82,15 +82,15 @@ function Testimonials() {
                   <div className='flex items-center mt-4 space-x-4'>
                     <img
                       src={"https://source.unsplash.com/50x50/?portrait?3"}
-                      alt=''
+                      alt='testimonial 3'
                       className='w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500'
                     />
                     <div>
                       <p className='text-lg font-semibold text-gray-600'>
-                        Leroy Jenkins
+                        Krutik Patel
                       </p>
-                      <p className='text-sm font-medium text-gray-400'>
-                        CTO of Company Co.
+                      <p className='text-sm font-medium text-gray-600'>
+                        Student at SVIT
                       </p>
                     </div>
                   </div>
@@ -106,15 +106,15 @@ function Testimonials() {
                   <div className='flex items-center mt-4 space-x-4'>
                     <img
                       src={"https://source.unsplash.com/50x50/?portrait?4"}
-                      alt=''
+                      alt='testimonial 4'
                       className='w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500'
                     />
                     <div>
                       <p className='text-lg font-semibold text-gray-600'>
-                        Leroy Jenkins
+                        Harsh Prajapti
                       </p>
-                      <p className='text-sm font-medium text-gray-400'>
-                        CTO of Company Co.
+                      <p className='text-sm font-medium text-gray-600'>
+                        Student at CSU North Ridge
                       </p>
                     </div>
                   </div>
