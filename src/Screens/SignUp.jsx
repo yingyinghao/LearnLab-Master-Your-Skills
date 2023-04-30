@@ -3,8 +3,24 @@ import { Link, useNavigate } from "react-router-dom";
 // import { auth, signUp, db } from "../firebase";
 import { auth, signUp } from "../firebase";
 import { useState, useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../context/AuthContext";
 // import firebase from "firebase/compat/app";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  sendEmailVerification,
+  signOut,
+} from "firebase/auth";
 const db = getFirestore();
 
 function SignUp() {
@@ -15,6 +31,44 @@ function SignUp() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then(async (result) => {
+        const user = result.user;
+        dispatch({ type: "LOGIN", payload: user });
+        const { displayName, email, uid } = user;
+        const nameParts = displayName.split(" ");
+        const firstName = nameParts[0];
+        const lastName =
+          nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
+
+        const userDocRef = doc(db, "users", uid);
+        const userDoc = await getDoc(userDocRef);
+
+        if (!userDoc.exists()) {
+          const response = await setDoc(userDocRef, {
+            firstName,
+            lastName,
+            displayName,
+            email,
+            coursesEnrolled: [],
+            coursesCompleted: [],
+          })
+            .then(() => {
+              console.log("Document written successfully!");
+            })
+            .catch((error) => {
+              console.error("Error writing document: ", error);
+            });
+        }
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -219,7 +273,10 @@ function SignUp() {
                 <div className="mt-6 grid grid-cols-4 gap-2">
                   <div className="col-span-4 sm:col-span-2">
                     <div className="w-auto py-2">
-                      <button className="flex items-center p-4 bg-white hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200">
+                      <button
+                        className="flex items-center p-4 bg-white hover:bg-gray-50 border rounded-lg transition ease-in-out duration-200"
+                        onClick={handleGoogleSignIn}
+                      >
                         <img
                           className="mr-3 w-[20px]"
                           src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"

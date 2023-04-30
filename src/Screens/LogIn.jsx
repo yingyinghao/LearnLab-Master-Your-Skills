@@ -25,45 +25,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const db = getFirestore();
 
 function LogIn() {
-  //   const handleGoogleSignIn = () => {
-  //     signInWithPopup(auth, new GoogleAuthProvider())
-  //       .then((result) => {
-  //         // The signed-in user info.
-  //         const user = result.user;
-  //         // Do something with the user object...
-  //         dispatch({ type: "LOGIN", payload: user });
-  //         navigate("/dashboard");
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   };
-
-  //   const [error, setError] = useState(false);
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-
-  //   const { dispatch } = useContext(AuthContext);
-
-  //   // console.log(dispatch, 12345);
-  //   const handleLogin = (e) => {
-  //     e.preventDefault();
-
-  //     signIn(auth, email, password)
-  //       .then((userCredential) => {
-  //         // setError(false);
-  //         const user = userCredential.user;
-  //         dispatch({ type: "LOGIN", payload: user });
-  //         navigate("/dashboard");
-  //       })
-  //       .catch((error) => {
-  //         // const errorCode = error.code;
-  //         const errorMessage = error.message;
-  //         // setError(true);
-  //         console.log(errorMessage);
-  //       });
-  //   };
-
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
 
@@ -115,6 +76,8 @@ function LogIn() {
             lastName,
             displayName,
             email,
+            coursesEnrolled: [],
+            coursesCompleted: [],
           })
             .then(() => {
               console.log("Document written successfully!");
@@ -151,7 +114,6 @@ function LogIn() {
     }
   };
 
-  // console.log(dispatch, 12345);
   const handleLogin = async (e) => {
     e.preventDefault();
 
