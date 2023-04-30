@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 function Footer() {
   return (
@@ -9,33 +10,33 @@ function Footer() {
         </div>
 
         <p className='mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-700'>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-          consequuntur amet culpa cum itaque neque.
+          Our mission is to provide you with the tools and resources you need to
+          learn and grow without any limits.
         </p>
 
         <nav aria-label='Footer Nav' className='mt-12'>
           <ul className='flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12'>
             <li>
-              <a
+              <Link
                 className='text-gray-800 transition hover:text-blue-600'
                 href='/login'>
                 Log In
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
+              <Link
                 className='text-gray-800 transition hover:text-blue-600'
                 href='/signup'>
                 Sign Up
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
 
         <ul className='mt-6 flex justify-center gap-6 md:gap-8'>
           <li>
-            <a
+            <Link
               href='https://github.com/yingyinghao/LearnLab-Master-Your-Skills'
               rel='noreferrer'
               target='_blank'
@@ -52,7 +53,7 @@ function Footer() {
                   clipRule='evenodd'
                 />
               </svg>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -26,7 +26,7 @@ const MyAccount = () => {
   const [isGoogleProvider, setIsGoogleProvider] = useState(false);
 
   const logToken = async (user) => {
-    console.log(await user.getIdToken());
+    // console.log(await user.getIdToken());
   };
   if (!loading) {
     logToken(user);
@@ -80,7 +80,7 @@ const MyAccount = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
-        console.log("Successfully Logged Out!");
+        // console.log("Successfully Logged Out!");
         dispatch({type: "LOGOUT"});
         navigate("/login");
       })
@@ -170,7 +170,7 @@ const MyAccount = () => {
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
                   <label
-                    for='PasswordConfirmation'
+                    htmlFor='PasswordConfirmation'
                     className='block text-gray-700 text-lg font-bold mb-2'>
                     Password Confirmation
                   </label>

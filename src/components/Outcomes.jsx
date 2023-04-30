@@ -39,7 +39,7 @@ function Outcomes() {
             <p className='text-xl leading-relaxed text-gray-900 mt-9'>
               Our courses offer practical knowledge and expert guidance to help
               you achieve your career goals. Join the
-              <span className='text-blue-600 font-bold'> 55%</span> of
+              <span className='text-blue-600 font-bold'> 90%</span> of
               professionals who have reported career benefits such as
               promotions, skill improvements, and new job opportunities.
             </p>

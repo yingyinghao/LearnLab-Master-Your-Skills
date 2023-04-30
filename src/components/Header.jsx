@@ -35,11 +35,13 @@ function Header() {
     <nav className='bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200 mb-36'>
       <div className='container flex flex-wrap items-center justify-between mx-auto'>
         <div href='/' className='flex items-center'>
-          <img src={Logo} alt='logo' className='h-14 w-26' />
+          <Link to='/dashboard'>
+            <img src={Logo} alt='logo' className='h-14 w-26' />
+          </Link>
         </div>
         <div className='flex md:order-2'>
           <Link to='/myaccount'>
-            <label for='accountBtn' className='sr-only'>
+            <label htmlFor='accountBtn' className='sr-only'>
               My accounts Button
             </label>
             <button

@@ -81,14 +81,9 @@ function FavoriteCourses() {
         scores and the total number of participants. We hope this helps you with
         your course selection.
       </p>
-      {/* <div className='grid grid-cols-3 gap-16 mt-8 px-28 justify-items-center align-items-center'>
-        {topCourses.map((course) => {
-          return <Card courseData={course} />;
-        })}
-      </div> */}
       <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8 px-6 sm:px-12 md:px-20 lg:px-28 justify-items-center'>
         {topCourses.map((course) => {
-          return <Card courseData={course} />;
+          return <Card key={course.id} courseData={course} />;
         })}
       </div>
     </div>
