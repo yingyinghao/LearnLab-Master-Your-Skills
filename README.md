@@ -26,6 +26,6 @@ npm start
 ```
 This will launch the application on your local server. Open your web browser and visit ```http://localhost:3000``` to access Learn Lab.
 
-# Demo/Walkthrough For App
+## Demo/Walkthrough For App
 
 - [YouTube](https://youtu.be/dEOEWpP1yt0)
