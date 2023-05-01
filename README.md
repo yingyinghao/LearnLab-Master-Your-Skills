@@ -9,9 +9,9 @@ Learn Lab is a web application that provides a user-friendly interface for learn
 
 To set up the Learn Lab project on your local machine, please follow these steps:
 
-1. Clone the repository in your local machine: 
+1. Clone the repository in your local machine.
 
-2. Navigate to the project's root directory: & run the below scripts -
+2. Navigate to the project's root directory & run the below scripts.
 
 3. Install the required dependencies using npm:
 
